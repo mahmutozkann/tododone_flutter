@@ -13,6 +13,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     const appBarTitle = "ToDoDone";
     return DefaultTabController(
+      initialIndex: 1,
       length: 3,
       child: Scaffold(
         appBar: AppBar(
