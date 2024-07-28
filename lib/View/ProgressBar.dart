@@ -100,9 +100,9 @@ class _ProgressBarState extends State<ProgressBar> {
                               height: 220.0,
                               child: CircularProgressIndicator(
                                 value: completionPercentage,
-                                valueColor: const AlwaysStoppedAnimation<Color>(Colors.blue),
+                                valueColor: const AlwaysStoppedAnimation<Color>(Colors.green),
                                 strokeWidth: 20.0,
-                                backgroundColor: Colors.grey[300],
+                                backgroundColor: Colors.green[100],
                               ),
                             ),
                             Column(
