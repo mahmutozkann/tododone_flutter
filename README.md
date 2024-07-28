@@ -31,4 +31,4 @@ Flutter ve Firebase kullanarak yaptığım ToDoDone uygulaması.
 
 # Edit Task 
 
-<img width="489" alt="editTask" src="https://github.com/user-attachments/assets/a58b815b-8eab-4940-8042-1ab8f9fec879">
+<img width="300" alt="editTask" src="https://github.com/user-attachments/assets/a58b815b-8eab-4940-8042-1ab8f9fec879">
