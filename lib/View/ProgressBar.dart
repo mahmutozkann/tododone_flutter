@@ -89,7 +89,7 @@ class _ProgressBarState extends State<ProgressBar> {
                         const SizedBox(height: 10),
                         Text(
                           'Completed Tasks: $completedTasks',
-                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.green),
                         ),
                         const SizedBox(height: 32.0),
                         Stack(
