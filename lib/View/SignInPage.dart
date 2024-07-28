@@ -59,13 +59,20 @@ class _SignInPageState extends State<SignInPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            const Icon(
+              Icons.fact_check_rounded,
+              size: 150,
+            ),
             const SizedBox(
               height: 16,
             ),
             TextField(
               controller: _emailController,
               decoration: InputDecoration(
-                  border: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(16))),
+                  enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade400)),
+                  fillColor: Colors.grey.shade200,
+                  filled: true,
                   labelText: Email),
             ),
             const SizedBox(
@@ -75,7 +82,10 @@ class _SignInPageState extends State<SignInPage> {
               controller: _passwordController,
               obscureText: true,
               decoration: InputDecoration(
-                  border: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(16))),
+                  enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey.shade400)),
+                  fillColor: Colors.grey.shade200,
+                  filled: true,
                   labelText: Password),
             ),
             const SizedBox(
@@ -85,7 +95,23 @@ class _SignInPageState extends State<SignInPage> {
             ValueListenableBuilder<bool>(
                 valueListenable: isButtonEnabled,
                 builder: (context, value, child) {
-                  return ElevatedButton(onPressed: value ? signInUser : null, child: const Text("Sign In"));
+                  return GestureDetector(
+                    onTap: value ? signInUser : null,
+                    child: Container(
+                      height: 40,
+                      margin: const EdgeInsets.symmetric(horizontal: 25),
+                      decoration: BoxDecoration(
+                        color: value ? Colors.black : Colors.grey,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          "Sign In",
+                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
+                        ),
+                      ),
+                    ),
+                  );
                 }),
             const SizedBox(
               height: 16,
@@ -94,11 +120,25 @@ class _SignInPageState extends State<SignInPage> {
             const SizedBox(
               height: 16,
             ),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SignUpPage()));
-                },
-                child: const Text("Sign Up")),
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SignUpPage()));
+              },
+              child: Container(
+                height: 40,
+                margin: const EdgeInsets.symmetric(horizontal: 25),
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: const Center(
+                  child: Text(
+                    "Sign Up",
+                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

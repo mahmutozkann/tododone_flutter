@@ -90,13 +90,23 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   const SizedBox(
                     height: 20,
                   ),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                      onPressed: forgotPassword,
-                      child: const Text(
-                        "Send",
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),
-                      ))
+                  GestureDetector(
+                    onTap: forgotPassword,
+                    child: Container(
+                      height: 40,
+                      margin: const EdgeInsets.symmetric(horizontal: 25),
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          "Send",
+                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
