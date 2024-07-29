@@ -81,7 +81,7 @@ class _CompletedTasksState extends State<CompletedTasks> {
               }
 
               return Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(5.0),
                 child: ListView.builder(
                   itemCount: snapshot.data!.length,
                   itemBuilder: (context, index) {
@@ -90,11 +90,9 @@ class _CompletedTasksState extends State<CompletedTasks> {
                       margin: const EdgeInsets.symmetric(horizontal: 2),
                       child: Row(
                         children: [
-                          Container(
-                              width: 3, height: 80, color: task['isCompleted'] == true ? Colors.black : Colors.grey),
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsets.all(16),
+                              padding: const EdgeInsets.all(8),
                               child: TaskView(
                                 taskId: task['taskId'],
                                 title: task['title'],

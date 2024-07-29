@@ -23,95 +23,121 @@ class TaskView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Formatted Time
-    String formattedTime = DateFormat('yyyy-MM-dd HH:mm').format(time);
-    return Card(
-      elevation: 4.0,
-      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+    String formattedTime = DateFormat('yyyy-MM-dd').format(time);
+    String formattedClock = DateFormat('HH:mm').format(time);
+    return Stack(children: [
+      Positioned(
+        //Saat
+        top: 80,
+        child: Row(
           children: [
-            // Başlık ve Butonlar
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Text(
+              formattedClock,
+              style: const TextStyle(fontSize: 14, color: Colors.blueGrey),
+            ),
+            const Icon(
+              Icons.linear_scale_rounded,
+              size: 25,
+            )
+          ],
+        ),
+      ),
+      Container(
+        margin: EdgeInsets.only(left: 56),
+        child: Card(
+          elevation: 4.0,
+          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      decoration: isCompleted ? TextDecoration.lineThrough : TextDecoration.none,
+                // Başlık ve Butonlar
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        title,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          decoration: isCompleted ? TextDecoration.lineThrough : TextDecoration.none,
+                        ),
+                      ),
                     ),
+                    Row(
+                      children: [
+                        Checkbox(
+                          value: isCompleted,
+                          onChanged: (bool? value) async {
+                            if (value != null) {
+                              await authService.updateTaskStatus(taskId, value);
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+
+                // Task Description
+                Text(
+                  description,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey[700],
+                    decoration: isCompleted ? TextDecoration.lineThrough : TextDecoration.none,
                   ),
                 ),
+                const SizedBox(height: 8),
+
+                // Task Time ve Checkbox
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    IconButton(
-                      icon: const Icon(Icons.edit),
-                      highlightColor: Colors.yellow,
-                      onPressed: () {
-                        showModalBottomSheet(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AddTaskWidget(
-                              taskId: taskId,
-                              initialTitle: title,
-                              initialDescription: description,
-                              authService: authService,
+                    Text(
+                      formattedTime,
+                      style: const TextStyle(fontSize: 14, color: Colors.blueGrey),
+                    ),
+                    Row(
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.edit),
+                          highlightColor: Colors.yellow,
+                          onPressed: () {
+                            showModalBottomSheet(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AddTaskWidget(
+                                  taskId: taskId,
+                                  initialTitle: title,
+                                  initialDescription: description,
+                                  authService: authService,
+                                );
+                              },
                             );
                           },
-                        );
-                      },
-                    ),
-                    IconButton(
-                      highlightColor: Colors.grey,
-                      icon: const Icon(Icons.delete),
-                      onPressed: () async {
-                        await authService.deleteTask(taskId);
-                      },
+                        ),
+                        IconButton(
+                          highlightColor: Colors.grey,
+                          icon: const Icon(Icons.delete),
+                          onPressed: () async {
+                            await authService.deleteTask(taskId);
+                          },
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ],
             ),
-            const SizedBox(height: 8),
-
-            // Task Description
-            Text(
-              description,
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey[700],
-                decoration: isCompleted ? TextDecoration.lineThrough : TextDecoration.none,
-              ),
-            ),
-            const SizedBox(height: 8),
-
-            // Task Time ve Checkbox
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  formattedTime,
-                  style: const TextStyle(fontSize: 14, color: Colors.blueGrey),
-                ),
-                Checkbox(
-                  value: isCompleted,
-                  onChanged: (bool? value) async {
-                    if (value != null) {
-                      await authService.updateTaskStatus(taskId, value);
-                    }
-                  },
-                ),
-              ],
-            ),
-          ],
+          ),
         ),
       ),
-    );
+    ]);
   }
 }
 
