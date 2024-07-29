@@ -96,16 +96,6 @@ class _ProgressBarState extends State<ProgressBar> {
                         Stack(
                           alignment: Alignment.center,
                           children: [
-                            // SizedBox(
-                            //   width: 220.0,
-                            //   height: 220.0,
-                            //   child: CircularProgressIndicator(
-                            //     value: completionPercentage,
-                            //     valueColor: const AlwaysStoppedAnimation<Color>(Colors.green),
-                            //     strokeWidth: 20.0,
-                            //     backgroundColor: Colors.green[100],
-                            //   ),
-                            // ),
                             CircularPercentIndicator(
                               radius: 100,
                               lineWidth: 20,
