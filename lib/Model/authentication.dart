@@ -93,8 +93,12 @@ class AuthService {
       return Stream.value([]);
     }
 
-    Query firestoreQuery =
-        _firestore.collection("users").doc(userId).collection("tasks").where('isCompleted', isEqualTo: true);
+    Query firestoreQuery = _firestore
+        .collection("users")
+        .doc(userId)
+        .collection("tasks")
+        .where('isCompleted', isEqualTo: true)
+        .orderBy('time', descending: true);
 
     if (query.isNotEmpty) {
       firestoreQuery = firestoreQuery.where('title', isEqualTo: query);
@@ -120,8 +124,12 @@ class AuthService {
       return Stream.value([]);
     }
 
-    Query firestoreQuery =
-        _firestore.collection("users").doc(userId).collection("tasks").where('isCompleted', isEqualTo: false);
+    Query firestoreQuery = _firestore
+        .collection("users")
+        .doc(userId)
+        .collection("tasks")
+        .where('isCompleted', isEqualTo: false)
+        .orderBy('time', descending: true);
 
     if (query.isNotEmpty) {
       firestoreQuery = firestoreQuery.where('title', isEqualTo: query);
