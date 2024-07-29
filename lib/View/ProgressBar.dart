@@ -123,7 +123,7 @@ class _ProgressBarState extends State<ProgressBar> {
                                   const SizedBox(height: 8),
                                   Text(
                                     'Completed',
-                                    style: TextStyle(fontSize: 18, color: Colors.grey[600]),
+                                    style: TextStyle(fontSize: 18, color: Colors.green[600]),
                                   ),
                                 ],
                               ),
