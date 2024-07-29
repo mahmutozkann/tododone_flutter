@@ -15,7 +15,7 @@ Flutter ve Firebase kullanarak yaptığım ToDoDone uygulaması.
 
 # Progress Bar Page
 
-<img width="300" alt="progressBar" src="https://github.com/user-attachments/assets/263233a4-f35b-4aa2-9004-08fd9cfe6cf8">
+<img width="300" alt="progressbar" src="https://github.com/user-attachments/assets/c7281a88-7842-4f62-9e8f-b2dd327a3ab0">
 
 # Add Task
 
@@ -23,11 +23,11 @@ Flutter ve Firebase kullanarak yaptığım ToDoDone uygulaması.
 
 # Not Completed Tasks Page
 
-<img width="300" alt="notCompletedTasks" src="https://github.com/user-attachments/assets/5a745009-bc6d-44ea-bee1-23e21bd38293">
+<img width="300" alt="notCompletedTasks" src="https://github.com/user-attachments/assets/e862856c-de45-4787-bdf9-cc024aaf4efe">
 
 # Completed Tasks Page
 
-<img width="300" alt="completedTasks" src="https://github.com/user-attachments/assets/8a67e299-9486-4e2d-9b29-e046cf9b60c6">
+<img width="300" alt="completedTasks" src="https://github.com/user-attachments/assets/a30e602d-7384-45f0-b276-f5626eafab61">
 
 # Edit Task 
 
