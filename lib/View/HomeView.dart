@@ -48,6 +48,7 @@ class HomeView extends StatelessWidget {
           bottom: const PreferredSize(
             preferredSize: Size.fromHeight(50),
             child: TabBar(
+              indicatorColor: Colors.orange,
               isScrollable: true,
               tabs: [
                 Tab(
@@ -71,6 +72,7 @@ class HomeView extends StatelessWidget {
         body: const TabBarView(
           children: [CompletedTasks(), ProgressBar(), NotCompletedTasks()],
         ),
+        backgroundColor: Colors.grey.shade300,
       ),
     );
   }

@@ -73,7 +73,7 @@ class _ProgressBarState extends State<ProgressBar> {
                             ),
                             Text(
                               userEmail,
-                              style: const TextStyle(fontSize: 16, color: Colors.grey),
+                              style: const TextStyle(fontSize: 16, color: Colors.blue),
                             ),
                           ],
                         ),

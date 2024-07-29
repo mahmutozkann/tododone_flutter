@@ -51,6 +51,7 @@ class TaskView extends StatelessWidget {
                   children: [
                     IconButton(
                       icon: const Icon(Icons.edit),
+                      highlightColor: Colors.yellow,
                       onPressed: () {
                         showModalBottomSheet(
                           context: context,
@@ -66,6 +67,7 @@ class TaskView extends StatelessWidget {
                       },
                     ),
                     IconButton(
+                      highlightColor: Colors.grey,
                       icon: const Icon(Icons.delete),
                       onPressed: () async {
                         await authService.deleteTask(taskId);
