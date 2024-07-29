@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:todo_app/Model/authentication.dart';
 
 class ProgressBar extends StatefulWidget {
@@ -73,7 +72,7 @@ class _ProgressBarState extends State<ProgressBar> {
                             ),
                             Text(
                               userEmail,
-                              style: const TextStyle(fontSize: 16, color: Colors.blue),
+                              style: const TextStyle(fontSize: 16, color: Colors.grey),
                             ),
                           ],
                         ),
@@ -96,27 +95,30 @@ class _ProgressBarState extends State<ProgressBar> {
                         Stack(
                           alignment: Alignment.center,
                           children: [
-                            CircularPercentIndicator(
-                              radius: 100,
-                              lineWidth: 20,
-                              percent: completionPercentage,
-                              progressColor: Colors.green,
-                              backgroundColor: Colors.green.shade200,
-                              circularStrokeCap: CircularStrokeCap.round,
-                              center: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    '${(completionPercentage * 100).toStringAsFixed(1)}%',
-                                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  Text(
-                                    'Completed',
-                                    style: TextStyle(fontSize: 18, color: Colors.green[600]),
-                                  ),
-                                ],
+                            SizedBox(
+                              width: 220.0,
+                              height: 220.0,
+                              child: CircularProgressIndicator(
+                                strokeCap: StrokeCap.round,
+                                value: completionPercentage,
+                                valueColor: const AlwaysStoppedAnimation<Color>(Colors.green),
+                                strokeWidth: 20.0,
+                                backgroundColor: Colors.green[100],
                               ),
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  '${(completionPercentage * 100).toStringAsFixed(1)}%',
+                                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+                                ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  'Completed',
+                                  style: TextStyle(fontSize: 18, color: Colors.green[600]),
+                                ),
+                              ],
                             ),
                           ],
                         ),
